@@ -15,6 +15,7 @@
 #include <unicode/uchar.h>
 #include <regex>
 #include <vector>
+#include <set>
 
 using std::cin;
 using std::cout;

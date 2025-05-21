@@ -3,6 +3,7 @@
 int main() {
     std::setlocale(LC_ALL, "");
     std::map<std::string, std::vector<int>> zodziu_pasikartojimas;
+    std::set<string> rastos_nuorodos;
     std::string zodis;
     std::ifstream fd("tekstas.txt");
     std::stringstream ss;
@@ -15,7 +16,13 @@ int main() {
     while (std::getline(ss, linija)) {
         std::istringstream iss(linija);
         string zodis;
+        std::regex url_regex(R"(https?://[^\s]+)", std::regex::icase);
         while (iss >> zodis) {
+            if (std::regex_match(zodis, url_regex)) {
+                rastos_nuorodos.insert(zodis);
+                continue;
+            }
+
             icu::UnicodeString ustr = icu::UnicodeString::fromUTF8(zodis);
 
             icu::UnicodeString cleaned;
@@ -48,5 +55,10 @@ int main() {
             fr << x << " ";
         }
         fr << endl;
+    }
+
+    ofstream nrd("nuorodos.txt");
+    for (auto x : rastos_nuorodos) {
+        nrd << x << endl;
     }
 }
