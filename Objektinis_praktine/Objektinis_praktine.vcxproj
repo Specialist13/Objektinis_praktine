@@ -129,6 +129,7 @@
     <ClInclude Include="headers.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="nuorodos.txt" />
     <Text Include="rezultatas.txt" />
     <Text Include="tekstas.txt" />
   </ItemGroup>

@@ -19,6 +19,9 @@ int main() {
         std::regex url_regex(R"(https?://[^\s]+)", std::regex::icase);
         while (iss >> zodis) {
             if (std::regex_match(zodis, url_regex)) {
+                while (zodis.back() == '.' || zodis.back() == ',' || zodis.back() == '?' || zodis.back() == '!' || zodis.back() == ';') {
+                    zodis.pop_back();
+                }
                 rastos_nuorodos.insert(zodis);
                 continue;
             }
