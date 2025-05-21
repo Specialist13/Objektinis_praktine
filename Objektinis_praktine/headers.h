@@ -14,6 +14,7 @@
 #include <unicode/ustream.h>
 #include <unicode/uchar.h>
 #include <regex>
+#include <vector>
 
 using std::cin;
 using std::cout;
